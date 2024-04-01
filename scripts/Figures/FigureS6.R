@@ -83,19 +83,6 @@ all %>%
   facet_wrap(~fitness, scales = "free")
 dev.off()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 a1 <- lmer(PSi ~ `scale(bufLichen)` +
              `scale(bufRocky)`  +
              `scale(bufWetland)`  +
