@@ -1,3 +1,10 @@
+# Directories with large files #
+################################
+input/
+output/models
+output/vertices
+output/1-cleaned-locs.Rds
+
 # History files
 .Rhistory
 .Rapp.history
