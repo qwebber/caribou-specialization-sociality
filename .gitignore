@@ -4,6 +4,7 @@ input/
 output/models
 output/vertices
 output/1-cleaned-locs.Rds
+output/2-networks.Rds
 
 # History files
 .Rhistory
