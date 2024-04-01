@@ -1,7 +1,9 @@
 
 ## The adaptive value of density-dependent habitat specialization and social network centrality
 
-- Authors:
+
+
+  - Authors:
       - [Quinn M.R. Webber](https://qwebber.weebly.com/)
       - Michel P. Laforge
       - Maegwin Bonar
