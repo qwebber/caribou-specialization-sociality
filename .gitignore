@@ -2,6 +2,7 @@
 ################################
 input/
 output/models
+output/RSF models
 output/figure 1 data/mod_cent_BRN.Rds
 output/figure 1 data/mod_PSi_BRN.Rds
 output/vertices
