@@ -10,7 +10,7 @@ output/2-networks.Rds
 output/3-PSi.RDS
 output/4-home-range-area.RDS
 output/6-rdmNets-100.RDS
-
+output/sample-locs
 
 
 # History files
