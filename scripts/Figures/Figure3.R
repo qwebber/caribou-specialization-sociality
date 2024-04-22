@@ -2,7 +2,7 @@
 
 
 ###############################################
-################### FIGURE 3 ################### 
+################### FIGURE 3 ###################
 ###############################################
 
 library(data.table)
@@ -17,16 +17,16 @@ summary(mod2)
 ## Low Density (mod 2)
 df_adapt_PSi_low <- data.table(Trait = attr(colMeans(mod2$Sol), "names"),
                            Value = colMeans(mod2$Sol),
-                           HPD = HPDinterval(mod2$Sol)) 
-df_adapt_PSi_low$Trait <- gsub(pattern = ".1:",replacement = "", as.factor(df_adapt_PSi_low$Trait)) 
-df_adapt_PSi_low$Trait <- gsub(pattern = "l.1",replacement = "", as.factor(df_adapt_PSi_low$Trait)) 
+                           HPD = HPDinterval(mod2$Sol))
+df_adapt_PSi_low$Trait <- gsub(pattern = ".1:",replacement = "", as.factor(df_adapt_PSi_low$Trait))
+df_adapt_PSi_low$Trait <- gsub(pattern = "l.1",replacement = "", as.factor(df_adapt_PSi_low$Trait))
 df_adapt_PSi_low2 <- df_adapt_PSi_low[29:416,]
 df_adapt_PSi_low2[, c('Trait', 'ANIMAL_ID' ,'ID') := tstrsplit(Trait, '.', fixed = TRUE)]
 
-df_adapt_PSi_low2$Trait[df_adapt_PSi_low2$Trait == "traitPSi"] <- 'IntPSi'  
-df_adapt_PSi_low2$Trait[df_adapt_PSi_low2$Trait == "traitSurviva"] <- 'IntSurv'  
-df_adapt_PSi_low2$Trait[df_adapt_PSi_low2$Trait == "traitPSi:scalePopDen"] <- 'PlastPSi'  
-df_adapt_PSi_low2$Trait[df_adapt_PSi_low2$Trait == "traitSurvivalscalePopDen"] <- 'PlastSurv'  
+df_adapt_PSi_low2$Trait[df_adapt_PSi_low2$Trait == "traitPSi"] <- 'IntPSi'
+df_adapt_PSi_low2$Trait[df_adapt_PSi_low2$Trait == "traitSurviva"] <- 'IntSurv'
+df_adapt_PSi_low2$Trait[df_adapt_PSi_low2$Trait == "traitPSi:scalePopDen"] <- 'PlastPSi'
+df_adapt_PSi_low2$Trait[df_adapt_PSi_low2$Trait == "traitSurvivalscalePopDen"] <- 'PlastSurv'
 
 df_adapt_PSi_low2[, c("ANIMAL_ID") := NULL]
 
@@ -49,16 +49,16 @@ summary(mod3)
 
 df_adapt_PSi_high <- data.table(Trait = attr(colMeans(mod3$Sol), "names"),
                             Value = colMeans(mod3$Sol),
-                            HPD = HPDinterval(mod3$Sol)) 
-df_adapt_PSi_high$Trait <- gsub(pattern = ".1:",replacement = "", as.factor(df_adapt_PSi_high$Trait)) 
-df_adapt_PSi_high$Trait <- gsub(pattern = "l.1",replacement = "", as.factor(df_adapt_PSi_high$Trait)) 
+                            HPD = HPDinterval(mod3$Sol))
+df_adapt_PSi_high$Trait <- gsub(pattern = ".1:",replacement = "", as.factor(df_adapt_PSi_high$Trait))
+df_adapt_PSi_high$Trait <- gsub(pattern = "l.1",replacement = "", as.factor(df_adapt_PSi_high$Trait))
 df_adapt_PSi_high2 <- df_adapt_PSi_high[31:390,]
 df_adapt_PSi_high2[, c('Trait', 'ANIMAL_ID' ,'ID') := tstrsplit(Trait, '.', fixed = TRUE)]
 
-df_adapt_PSi_high2$Trait[df_adapt_PSi_high2$Trait == "traitPSi"] <- 'IntPSi'  
-df_adapt_PSi_high2$Trait[df_adapt_PSi_high2$Trait == "traitSurviva"] <- 'IntSurv'  
-df_adapt_PSi_high2$Trait[df_adapt_PSi_high2$Trait == "traitPSi:scalePopDen"] <- 'PlastPSi'  
-df_adapt_PSi_high2$Trait[df_adapt_PSi_high2$Trait == "traitSurvivalscalePopDen"] <- 'PlastSurv'  
+df_adapt_PSi_high2$Trait[df_adapt_PSi_high2$Trait == "traitPSi"] <- 'IntPSi'
+df_adapt_PSi_high2$Trait[df_adapt_PSi_high2$Trait == "traitSurviva"] <- 'IntSurv'
+df_adapt_PSi_high2$Trait[df_adapt_PSi_high2$Trait == "traitPSi:scalePopDen"] <- 'PlastPSi'
+df_adapt_PSi_high2$Trait[df_adapt_PSi_high2$Trait == "traitSurvivalscalePopDen"] <- 'PlastSurv'
 
 df_adapt_PSi_high2[, c("ANIMAL_ID") := NULL]
 
@@ -87,16 +87,16 @@ summary(mod4)
 ## Low Density (mod 2)
 df_adapt_soc_low <- data.table(Trait = attr(colMeans(mod4$Sol), "names"),
                                Value = colMeans(mod4$Sol),
-                               HPD = HPDinterval(mod4$Sol)) 
-df_adapt_soc_low$Trait <- gsub(pattern = ".1:",replacement = "", as.factor(df_adapt_soc_low$Trait)) 
-df_adapt_soc_low$Trait <- gsub(pattern = "l.1",replacement = "", as.factor(df_adapt_soc_low$Trait)) 
+                               HPD = HPDinterval(mod4$Sol))
+df_adapt_soc_low$Trait <- gsub(pattern = ".1:",replacement = "", as.factor(df_adapt_soc_low$Trait))
+df_adapt_soc_low$Trait <- gsub(pattern = "l.1",replacement = "", as.factor(df_adapt_soc_low$Trait))
 df_adapt_soc_low2 <- df_adapt_soc_low[29:388,]
 df_adapt_soc_low2[, c('Trait', 'ANIMAL_ID' ,'ID') := tstrsplit(Trait, '.', fixed = TRUE)]
 
-df_adapt_soc_low2$Trait[df_adapt_soc_low2$Trait == "traitstrength_soc"] <- 'IntSoc'  
-df_adapt_soc_low2$Trait[df_adapt_soc_low2$Trait == "traitSurviva"] <- 'IntSurvSoc'  
-df_adapt_soc_low2$Trait[df_adapt_soc_low2$Trait == "traitstrength_soc:scalePopDen"] <- 'PlastSoc'  
-df_adapt_soc_low2$Trait[df_adapt_soc_low2$Trait == "traitSurvivalscalePopDen"] <- 'PlastSurvSoc'  
+df_adapt_soc_low2$Trait[df_adapt_soc_low2$Trait == "traitstrength_soc"] <- 'IntSoc'
+df_adapt_soc_low2$Trait[df_adapt_soc_low2$Trait == "traitSurviva"] <- 'IntSurvSoc'
+df_adapt_soc_low2$Trait[df_adapt_soc_low2$Trait == "traitstrength_soc:scalePopDen"] <- 'PlastSoc'
+df_adapt_soc_low2$Trait[df_adapt_soc_low2$Trait == "traitSurvivalscalePopDen"] <- 'PlastSurvSoc'
 
 df_adapt_soc_low2[, c("ANIMAL_ID") := NULL]
 
@@ -119,16 +119,16 @@ summary(mod5)
 
 df_adapt_soc_high <- data.table(Trait = attr(colMeans(mod5$Sol), "names"),
                                 Value = colMeans(mod5$Sol),
-                                HPD = HPDinterval(mod5$Sol)) 
-df_adapt_soc_high$Trait <- gsub(pattern = ".1:",replacement = "", as.factor(df_adapt_soc_high$Trait)) 
-df_adapt_soc_high$Trait <- gsub(pattern = "l.1",replacement = "", as.factor(df_adapt_soc_high$Trait)) 
+                                HPD = HPDinterval(mod5$Sol))
+df_adapt_soc_high$Trait <- gsub(pattern = ".1:",replacement = "", as.factor(df_adapt_soc_high$Trait))
+df_adapt_soc_high$Trait <- gsub(pattern = "l.1",replacement = "", as.factor(df_adapt_soc_high$Trait))
 df_adapt_soc_high2 <- df_adapt_soc_high[31:360,]
 df_adapt_soc_high2[, c('Trait', 'ANIMAL_ID' ,'ID') := tstrsplit(Trait, '.', fixed = TRUE)]
 
-df_adapt_soc_high2$Trait[df_adapt_soc_high2$Trait == "traitstrength_soc"] <- 'IntSoc'  
-df_adapt_soc_high2$Trait[df_adapt_soc_high2$Trait == "traitSurviva"] <- 'IntSurvSoc'  
-df_adapt_soc_high2$Trait[df_adapt_soc_high2$Trait == "traitstrength_soc:scalePopDen"] <- 'PlastSoc'  
-df_adapt_soc_high2$Trait[df_adapt_soc_high2$Trait == "traitSurvivalscalePopDen"] <- 'PlastSurvSoc'  
+df_adapt_soc_high2$Trait[df_adapt_soc_high2$Trait == "traitstrength_soc"] <- 'IntSoc'
+df_adapt_soc_high2$Trait[df_adapt_soc_high2$Trait == "traitSurviva"] <- 'IntSurvSoc'
+df_adapt_soc_high2$Trait[df_adapt_soc_high2$Trait == "traitstrength_soc:scalePopDen"] <- 'PlastSoc'
+df_adapt_soc_high2$Trait[df_adapt_soc_high2$Trait == "traitSurvivalscalePopDen"] <- 'PlastSurvSoc'
 
 df_adapt_soc_high2[, c("ANIMAL_ID") := NULL]
 
@@ -150,24 +150,25 @@ SurvSocDF <- rbind(IntSurvSocLow, IntSurvSocHigh)
 
 
 
-all <- cbind(SocIntDF, 
+all <- cbind(SocIntDF,
              SurvSocDF[,c("ID", "density") := NULL],
-             PSiIntDF[,c("ID", "density") := NULL], 
-             SurvPSiDF[,c("ID", "density") := NULL]) 
+             PSiIntDF[,c("ID", "density") := NULL],
+             SurvPSiDF[,c("ID", "density") := NULL])
 
+fwrite(all, "output/figure 3 data/psi-soc-surv.csv")
 
 png("graphics/Fig3.png", width = 6000, height = 4000, res = 600, units = "px")
 ggplot(all, aes(IntPSi, IntSurv, group = density)) +
-  geom_errorbar(data = all, aes(ymin = IntSurv.lower, 
+  geom_errorbar(data = all, aes(ymin = IntSurv.lower,
                                  ymax = IntSurv.upper),
                 color = "grey") +
-  geom_errorbarh(data = all, aes(xmin = IntPSi.lower, 
+  geom_errorbarh(data = all, aes(xmin = IntPSi.lower,
                                   xmax = IntPSi.upper),
                  color = "grey") +
   geom_point(color = "black", size = 2, alpha = 0.65) +
   geom_smooth(data = all[density == "High density"], aes(IntPSi, IntSurv, group = density),
-              color = "black", 
-              method = "lm", 
+              color = "black",
+              method = "lm",
               se = F) +
   xlab(expression(Specialist %<->% Generalist)) +
   ylab(expression(`Low fitness` %<->% `High fitness`)) +
