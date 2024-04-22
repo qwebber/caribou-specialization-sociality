@@ -1,6 +1,6 @@
 
 ###############################################
-################### FIGURE 2 ################### 
+################### FIGURE 2 ###################
 ###############################################
 
 #### PHENOTYPIC COVARIANCE ####
@@ -8,7 +8,7 @@
 library(data.table)
 library(ggplot2)
 library(MCMCglmm)
-#### All data combined ##### 
+#### All data combined #####
 
 mod1 <- readRDS("output/models/1-ModAllData.RDS")
 summary(mod1)
@@ -17,18 +17,18 @@ colSd <- function (x, na.rm=FALSE) apply(X=x, MARGIN=2, FUN=sd, na.rm=na.rm)
 
 df_adapt <- data.table(Trait = attr(colMeans(mod1$Sol), "names"),
                        Value = colMeans(mod1$Sol),
-                       HPD = HPDinterval(mod1$Sol)) 
-df_adapt$Trait <- gsub(pattern = ".1:",replacement = "", as.factor(df_adapt$Trait)) 
-df_adapt$Trait <- gsub(pattern = "_",replacement = "", as.factor(df_adapt$Trait)) 
+                       HPD = HPDinterval(mod1$Sol))
+df_adapt$Trait <- gsub(pattern = ".1:",replacement = "", as.factor(df_adapt$Trait))
+df_adapt$Trait <- gsub(pattern = "_",replacement = "", as.factor(df_adapt$Trait))
 df_adapt2 <- df_adapt[43:804,]
 df_adapt2[, c('Trait', 'ANIMAL_ID' ,'ID', 'aa') := tstrsplit(Trait, '.', fixed = TRUE)]
 
-df_adapt2$Trait[df_adapt2$Trait == "traitstrengthsoc"] <- 'IntCent'  
-df_adapt2$Trait[df_adapt2$Trait == "traitPSi"] <- 'IntPSi'  
-df_adapt2$Trait[df_adapt2$Trait == "traitSurvival"] <- 'IntSurv'  
-df_adapt2$Trait[df_adapt2$Trait == "traitstrengthsoc:scalePopDen"] <- 'PlastCent'  
-df_adapt2$Trait[df_adapt2$Trait == "traitPSi:scalePopDen"] <- 'PlastPSi'  
-df_adapt2$Trait[df_adapt2$Trait == "traitSurvivalscalePopDen"] <- 'PlastSurv'  
+df_adapt2$Trait[df_adapt2$Trait == "traitstrengthsoc"] <- 'IntCent'
+df_adapt2$Trait[df_adapt2$Trait == "traitPSi"] <- 'IntPSi'
+df_adapt2$Trait[df_adapt2$Trait == "traitSurvival"] <- 'IntSurv'
+df_adapt2$Trait[df_adapt2$Trait == "traitstrengthsoc:scalePopDen"] <- 'PlastCent'
+df_adapt2$Trait[df_adapt2$Trait == "traitPSi:scalePopDen"] <- 'PlastPSi'
+df_adapt2$Trait[df_adapt2$Trait == "traitSurvivalscalePopDen"] <- 'PlastSurv'
 
 df_adapt2[, c("ANIMAL_ID", 'aa') := NULL]
 
@@ -58,25 +58,27 @@ colnames(PlastPSiAll)[2] <- "PlastPSi.lower"
 colnames(PlastPSiAll)[3] <- "PlastPSi.upper"
 
 
-all2 <- cbind(IntCentAll, IntPSiAll[,c("ID") := NULL], 
-              IntSurvAll[,c("ID") := NULL], 
+all2 <- cbind(IntCentAll, IntPSiAll[,c("ID") := NULL],
+              IntSurvAll[,c("ID") := NULL],
               PlastCentAll[,c("ID") := NULL],
               PlastPSiAll[,c("ID") := NULL])
+
+fwrite(all2, "output/figure 2 data/soc-hab.csv")
 
 #### Plot covariance independent of density
 png("graphics/Fig2.png", width = 4000, height = 4000, res = 600, units = "px")
 ggplot(all2, aes(IntCent, IntPSi)) +
-  geom_errorbar(data = all2, aes(ymin = IntPSi.lower, 
+  geom_errorbar(data = all2, aes(ymin = IntPSi.lower,
                                    ymax = IntPSi.upper),
                   color = "grey") +
-  geom_errorbarh(data = all2, aes(xmin = IntCent.lower, 
+  geom_errorbarh(data = all2, aes(xmin = IntCent.lower,
                                  xmax = IntCent.upper),
                 color = "grey") +
   geom_point(size = 2, color = "black") +
   geom_smooth(method = "lm", se = F, color = "black") +
   ylab(expression(Specialist %<->% Generalist)) +
   xlab('Social strength') +
-  theme(legend.position = c(0.2,0.85), 
+  theme(legend.position = c(0.2,0.85),
         legend.title = element_text('none'),
         legend.text = element_text(size = 12),
         legend.key = element_blank(),
